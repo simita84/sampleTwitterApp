@@ -5,7 +5,7 @@ describe "Static Pages of the Site" do
 	describe "Home Page" do
 
 		it "should have ' Twitter Sample App as title' " do
-			visit "/static_pages/home"
+			visit root_path
 			page.should have_selector('title',
 				:text=>'Lets Tweet|Home')
 			
@@ -13,7 +13,7 @@ describe "Static Pages of the Site" do
 
 
 		it "should have 'h1 selector as 'Sample Twitter Application' " do
-			visit "/static_pages/home"
+			visit root_path
 			page.should have_selector('h1',
 				:text=>'Welcome')
 
@@ -23,7 +23,7 @@ describe "Static Pages of the Site" do
 describe "Help Page" do
 
 		it "should have ' Help Page title' " do
-			visit "/static_pages/help"
+			visit help_path
 			page.should have_selector('title',
 				:text=>'Lets Tweet|Help')
 		end
@@ -32,7 +32,7 @@ describe "Help Page" do
 describe "About Us Page" do
 
 		it "should have ' Lets Tweet|About Us title' " do
-			visit "/static_pages/about"
+			visit about_path
 			page.should have_selector('title',
 				:text=>'Lets Tweet|About Us')
 		end
@@ -42,11 +42,11 @@ describe "About Us Page" do
 describe "Contact US page" do
  
  	it "should have Lets Tweet|Contact Us title" do 
- 		visit "/static_pages/contact"
+ 		visit contact_path
  		page.should have_selector('title',:text=>'Lets Tweet|Contact Us')
  	end
  	it "should have 'h1 selector as 'Contact Us' " do
-			visit "/static_pages/contact"
+			visit contact_path
 			page.should have_selector('h1',
 				:text=>'Contact Us')
 

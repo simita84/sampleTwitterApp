@@ -1,9 +1,24 @@
 
-
-<%provide(:title,'Home') %>
  
-<body>
-	<h1>Welcome</h1>
-</body>
+<%provide(:title,'Home') %>
 
+ <div class="center hero-unit"> 
+ 	
+		<h1 class="center">	
+			<%=link_to image_tag("tweet_bird_right.jpeg",alt:"Tweet")%>
+			Welcome to Tweeter
+			<%=link_to image_tag("tweet_bird_left.jpeg",alt:"Tweet")%>
+		</h1>
+		
+  <p>
+  	This is a  Sample Tweetteer Application.
+  	<br>
+  	<%=link_to "Sign Up",'#', class: "btn btn-large btn-primary" %>
+  
+	</p>
+		
+		
+ 
+  </div>
+ 
  
