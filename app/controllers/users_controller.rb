@@ -4,9 +4,7 @@ class UsersController < ApplicationController
  def index
  end
 
-  def new
-  	@user=User.new
-  end
+  
 
   def show
   	#raise params.inspect
@@ -14,13 +12,18 @@ class UsersController < ApplicationController
 
   end
 
+  def new
+  @user= User.new
+  end
+
   def create
     @user = User.new(params[:user])
       if @user.save
-        redirect_to root_path
-     
+        flash[:success]="Welcome #{@user.name}"
+        redirect_to user_path(@user)
      else
-         redirect_to signup_path
+        flash[:warning]="User not created"
+        redirect_to signup_path
       end
   end
 
