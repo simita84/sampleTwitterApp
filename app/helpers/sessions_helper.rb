@@ -6,7 +6,7 @@ module SessionsHelper
 		cookies.permanent[:remember_token]= user.remember_token
 			
 			#Method call to current_user=(user)			
-		current_user=user
+		@current_user=user
 	end
 
 	def signed_in?
