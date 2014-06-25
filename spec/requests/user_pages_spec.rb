@@ -16,7 +16,7 @@ describe "User Pages" do
  	describe "User Sign Up" do	
 		before{ visit signup_path }
 			it {should have_selector('title', :text=>'Sign Up') }
-			it {should have_selector('h1',    :text=>'Login')   }
+			it {should have_selector('h1',    :text=>'Sign Up')   }
 	end
 
  	describe "Signup Page" do
@@ -43,6 +43,7 @@ describe "User Pages" do
           
   				it { should have_selector("title",text: user.name)}
           it { should have_selector("div.alert.alert-success")}
+          it { should have_link('Sign Out')}
 
   			end
   		end

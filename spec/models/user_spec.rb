@@ -15,7 +15,8 @@ describe User do
   it {should respond_to(:password_digest)}
   it {should respond_to(:password)}
   it {should respond_to(:password_confirmation)}
-   it {should respond_to(:authenticate)}
+  it {should respond_to(:authenticate)}
+  it {should respond_to(:remember_token)}
 
 
 
@@ -87,6 +88,11 @@ describe "When password is too short" do
   it {should_not be_valid}
 end
 
+ describe "remember_token " do
+  before {@user.save}
+    it "should have nonblank remember_token" do
+    subject.remember_token.should_not be_blank
+    end
+ end
+  
 end
-
- 

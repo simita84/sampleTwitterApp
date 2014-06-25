@@ -27,17 +27,22 @@ describe "Static Pages of the Site" do
  			it {should have_selector('title',:text=>'Lets Tweet|Contact Us')}
  			it {should have_selector('h1',:text=>'Contact Us')}
 		end
-
+	
+	describe "Links in the Layout/Home page" do
+		before {visit root_path}
 		it "should have right links in the layout(Home)" do
-			visit root_path
+	
 			click_link 'About'
 				page.should have_selector('title',:text=>'Lets Tweet|About')
 			click_link 'Contact'	
 				page.should have_selector('title',:text=>'Lets Tweet|Contact Us')
 			click_link 'Help'
 				page.should have_selector('title',:text=>'Lets Tweet|Help')
-			#click_link 'Sign Up'
-			#	page.should have_selector('h1',:text=>'Login')
+			click_link 'Sign In'
+				page.should have_selector('title',:text=>'Lets Tweet|Sign In')
+			click_link 'Sign Up'
+				page.should have_selector('h1',:text=>'Login')
 		end
+	end
 
 end
