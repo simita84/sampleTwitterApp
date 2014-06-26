@@ -6,10 +6,10 @@
 	<div class="span6 offset 3">
 		<div class="hero-unit">
 					<%= render 'shared/error_messages'%> 
-		
-		 
-			 <%= form_for(:session, url: {action: "create"}) do |f| %>
-			 
+					
+			<%= form_for @user, url: {controller:"access",action: "create"} do |f| %>
+				<%=f.label :name%>
+				<%=f.text_field :name%>
 				<%=f.label :email%>
 				<%=f.text_field :email%>
 				<%=f.label :password%>
@@ -17,9 +17,7 @@
 				<%=f.label :password_confirmation,"Confirmation"%>
 				<%=f.password_field :password_confirmation%><br>
 				<%=f.submit "Submit",class:"btn btn-large btn-primary"%>
-		<% end %>
-		 <p>New user? <%= link_to "Sign up now!", signup_path %></p>
-
+			<% end %> 
 		</div>
 	</div>
 </div>

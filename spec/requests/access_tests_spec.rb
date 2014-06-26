@@ -1,6 +1,8 @@
+
+
 require 'spec_helper'
 
-describe "AuthenticationPages" do
+describe "Access Pages" do
   
   	subject{page}
 
@@ -16,7 +18,7 @@ describe "AuthenticationPages" do
 
  		describe "Sign In with blank fields"  do
  			before {visit signin_path}
- 			before {click_button('Sign In') }
+ 			before {click_button('Submit') }
  			 
  			it {should have_selector('div.alert.alert-error')}
 
@@ -24,7 +26,7 @@ describe "AuthenticationPages" do
  			describe "After visiting another page" do 
 
 				before {visit home_path}
-				it {should_not have_selector('div.alert')}
+				it {should_not have_selector('div.alert.alert-error')}
  			end
 		end
 
@@ -37,7 +39,7 @@ describe "AuthenticationPages" do
 				visit signin_path
 			  	fill_in('Email', with: user.email )
     			fill_in('Password', with: user.password)
-    			click_button('Sign In') 
+    			click_button('Submit') 
 			end
 			
 
@@ -60,5 +62,8 @@ describe "AuthenticationPages" do
 				it {should have_link('Sign In')}
 			end
 		end
+
+		 
  	end
 end
+
