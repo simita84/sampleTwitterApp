@@ -29,4 +29,23 @@ class UsersController < ApplicationController
   end
 
 
+  def edit
+    @user= User.find_by_id(params[:id])
+
+  end
+
+  def update
+      @user= User.find_by_id(params[:id])
+      @user.update_attributes(params[:user])
+       if @user.save
+         flash[:success]="Successfully modified"
+        redirect_to user_path(@user)
+       else
+        flash[:warning]="Sorry cannot be modified"
+       render "edit"
+     end
+
+  end
+
+
 end

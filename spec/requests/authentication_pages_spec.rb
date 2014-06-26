@@ -48,7 +48,8 @@ describe "AuthenticationPages" do
 
 			it {should have_link("Profile",href: user_path(user))}
 
-			it {should have_link("Settings")}
+			it {should have_link("Settings",href: edit_user_path(user))}
+
 			it {should have_link("Account")}
 			it {should have_link("Home",href:root_path)}
 			it {should have_link("Help",href:help_path)}
