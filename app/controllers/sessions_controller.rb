@@ -23,11 +23,7 @@ class SessionsController < ApplicationController
 					#storing session info
 		 			session[:user_id]=@user.id
 		 			session[:username]=@user.email
-
-
-		 			 
-
-		 			 #Giving mesage of succesful login
+	 			 #Giving mesage of succesful login
 					flash.now[:success]="Sign In Successful"
 					   #directing to authorized pages
 					redirect_to user_path(@user)
