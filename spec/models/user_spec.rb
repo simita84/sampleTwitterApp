@@ -16,11 +16,23 @@ describe User do
   it {should respond_to(:password)}
   it {should respond_to(:password_confirmation)}
   it {should respond_to(:authenticate)}
-  it {should respond_to(:remember_token)}
-
+  #it {should respond_to(:remember_token)}
+  it { should respond_to(:admin) }
+  #By default Admin is false
+  it { should_not be_admin }
 
 
   it {should be_valid}
+
+
+#MAking sure the Admin is not accessible
+describe "accessible attributes" do
+    it "should not allow access to admin" do
+      expect do
+        User.new(admin: "1")
+      end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
+    end
+  end
 
 describe "when username not present" do
   	before{@user.name=" "}
@@ -87,10 +99,10 @@ describe "When password is too short" do
   before {@user.password=@user.password_confirmation="a"*2 }
   it {should_not be_valid}
 end
-
+#Not included
  describe "remember_token " do
   before {@user.save}
-    it "should have nonblank remember_token" do
+    xit "should have nonblank remember_token" do
     subject.remember_token.should_not be_blank
     end
  end

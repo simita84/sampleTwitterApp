@@ -28,6 +28,8 @@ SampleTwitterApp::Application.routes.draw do
   match "/home"    , to: 'static_pages#home'
   match '/signout',  to: 'sessions#destroy', via: :delete
   match "/signup"  , to: 'users#new'
+ match "/users"     , to: 'users#index'
+ 
 
 
  

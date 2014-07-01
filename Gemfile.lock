@@ -140,6 +140,7 @@ GEM
       activesupport (= 3.2.11)
       bundler (~> 1.0)
       railties (= 3.2.11)
+    rails_layout (1.0.19)
     railties (3.2.11)
       actionpack (= 3.2.11)
       activesupport (= 3.2.11)
@@ -228,6 +229,7 @@ DEPENDENCIES
   newrelic_rpm
   pg (= 0.12.2)
   rails (= 3.2.11)
+  rails_layout
   rb-fsevent (= 0.4.3.1)
   rspec (~> 2.14.1)
   rspec-rails (>= 2.0.0.beta)

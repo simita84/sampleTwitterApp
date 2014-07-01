@@ -50,7 +50,7 @@ describe "User Pages" do
           it {should have_link("Account")}
           it {should have_link("Home",href:root_path)}
           it {should have_link("Help",href:help_path)}
-          it {should have_link("Users")}
+          it {should have_link("Users",href: users_path)}
 
 
 
@@ -93,35 +93,49 @@ describe "User Pages" do
     end
   
     describe "User modify profile with invalid information" do
-    
-      before{click_button "Submit"}
-
+        before{click_button "Submit"}
         it {should have_selector('div.alert.alert-error')}
-
     end
 
     describe "User modify profile with valid information" do
     
-      before  do
+        before  do
+          fill_in "Name" ,        with:"New name"
+          fill_in "Email",        with: "useremail"
+          fill_in "Password",     with:"secret"
+          fill_in "Confirmation", with:"secret"
+          click_button "Submit"
+        end
 
-        fill_in "Name" ,        with:"New name"
-        fill_in "Email",        with: "useremail"
-        fill_in "Password",     with:"secret"
-        fill_in "Confirmation", with:"secret"
-        click_button "Submit"
-
-      end
-      it {should have_selector('div.alert.alert-success')}
-      it {should have_selector('h1',text: "New name")}
-      it {should_not  have_link("Sign In",href: signin_path) }
-      it {should  have_link("Sign Out",href: signin_path) }
-     
-
+        it {should have_selector('div.alert.alert-success')}
+        it {should have_selector('h1',text: "New name")}
+        it {should_not  have_link("Sign In",href: signin_path) }
+        it {should  have_link("Sign Out",href: signin_path) }
     end
 
   end
 
-    
+  #Tests to make sure Admin abilities() are only for Admin user
+    describe "delete links" do
+
+      it { should_not have_link('delete') }
+
+      describe "as an admin user" do
+        let(:admin) { FactoryGirl.create(:admin) }
+          before do
+            fill_in('Email', with: admin.email )
+            fill_in('Password', with: admin.password)
+            click_button('Submit')
+            visit users_path
+          end
+
+        it { should have_link('delete', href: user_path(User.first)) }
+        it "should be able to delete another user" do
+          expect { click_link('delete') }.to change(User, :count).by(-1)
+        end
+        it { should_not have_link('delete', href: user_path(admin)) }
+      end
+    end
 
   
 

@@ -5,10 +5,10 @@
 <div class="row">
 	<div class="span6 offset 3">
 		<div class="hero-unit">
-					<%= render 'shared/error_messages'%> 
+					 
 		
 		 
-			 <%= form_for(:session, url: {action: "create"}) do |f| %>
+			 <%= form_for(:session, url:sessions_path) do |f| %>
 			 
 				<%=f.label :email%>
 				<%=f.text_field :email%>

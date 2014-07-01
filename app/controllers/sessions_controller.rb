@@ -12,10 +12,12 @@ class SessionsController < ApplicationController
 
 #User Sign In
 	def create 
-		
 
-		#Find user with email id
-		@user=User.find_by_email(params[:session][:email])	
+		 
+	 
+
+			#Find user with email id
+			@user=User.find_by_email(params[:session][:email])	
 		 
 
 				#  password validation
@@ -31,7 +33,8 @@ class SessionsController < ApplicationController
 					flash.now[:error]="Invalid password/email combination"
 					render 'new'
 				end	
-			 
+		 	
+		 
 	end
 
 #------------------------------End of  User Sign In-----------------------------
